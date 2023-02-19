@@ -14,6 +14,7 @@ public class TabelaDeContribuicaoINSS {
 		double taxa;
 		double taxaContIndividual;
 		double taxaContFacultativo;
+		double taxaContBaixaRenda;
 		double salarioLiquido;
 		double salarioMinimo = 1302.00;
 		int ano = 2023;
@@ -77,10 +78,27 @@ public class TabelaDeContribuicaoINSS {
 					System.out.printf("Salário mínimo vigente (" + ano + "): R$" + "%.2f%n", salarioMinimo);
 					System.out.printf("A parcela a ser paga nessa modalidade é: R$" + "%.2f%n", taxaContIndividual);
 				}
-				
 			}
 		} else {
-			System.out.println("\nSEGURADOS FACULTATIVOS são pessoas que não exercem atividade remunerada.\nExemplos: donas de casa, estudantes e desempregados.\n\nDentro da categoria CONTRIBUINTE FACULTATIVO, existe três modalidades de contribuição:\n• [Código 1406] PLANO NORMAL (20%)\n• [Código 1473] PLANO SIMPLIFICADO (11%)\n• [Código 1929] PLANO BAIXA RENDA (5%)\n\nEsses valores são calculados em cima do salário mínimo vigente.\nNeste caso, como estamos no ano de " + ano + ", o salário mínimo vigente é R$ " + salarioMinimo + ".\nDigite o número do plano ou código correspondente para calcular o valor da parcela.");
+			System.out.println("\nSEGURADOS FACULTATIVOS são pessoas que não exercem atividade remunerada.\nExemplos: donas de casa, estudantes e desempregados.\n\nDentro da categoria CONTRIBUINTE FACULTATIVO, existe três modalidades de contribuição:\n• [Código 1406] PLANO NORMAL (20%)\n• [Código 1473] PLANO SIMPLIFICADO (11%)\n• [Código 1929] PLANO BAIXA RENDA (5%)\n\nEsses valores são calculados em cima do salário mínimo vigente.\nNeste caso, como estamos no ano de " + ano + ", o salário mínimo vigente é R$ " + salarioMinimo + ".\n\nDigite o número do plano ou código correspondente para calcular o valor da parcela.");
+			System.out.print("\nNº do plano ou código: ");
+			plano = scan.nextInt();
+			if (plano == 20 || plano == 1406) {
+				System.out.println("\nPlano escolhido: PLANO NORMAL (20%)");
+				taxaContFacultativo = (salarioMinimo * 20) / 100;
+				System.out.printf("Salário mínimo vigente (" + ano + "): R$" + "%.2f%n", salarioMinimo);
+				System.out.printf("A parcela a ser paga nessa modalidade é: R$" + "%.2f%n", taxaContFacultativo);
+			} else if (plano == 11 || plano == 1473) {
+				System.out.println("\nPlano escolhido: PLANO SIMPLIFICADO (11%)");
+				taxaContFacultativo = (salarioMinimo * 11) / 100;
+				System.out.printf("Salário mínimo vigente (" + ano + "): R$" + "%.2f%n", salarioMinimo);
+				System.out.printf("A parcela a ser paga nessa modalidade é: R$" + "%.2f%n", taxaContFacultativo);
+			} else if (plano == 5 || plano == 1929) {
+				System.out.println("\nPlano escolhido: PLANO BAIXA RENDA (5%)");
+				taxaContBaixaRenda = (salarioMinimo * 5) / 100;
+				System.out.printf("Salário mínimo vigente (" + ano + "): R$" + "%.2f%n", salarioMinimo);
+				System.out.printf("A parcela a ser paga nessa modalidade é: R$" + "%.2f%n", taxaContBaixaRenda);
+			}
 		}
 	}
 }
